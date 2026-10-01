@@ -2266,6 +2266,8 @@ public class NMSImpl implements NMSBridge {
 
     @SuppressWarnings("rawtypes")
     public static void clearFluidTracker(NPC npc, Entity handle) {
+        if (ENTITY_FLUID_INTERACTION_MAP == null)
+            return;
         Map map;
         try {
             map = (Reference2ObjectMap) ENTITY_FLUID_INTERACTION_MAP.invoke(ENTITY_FLUID_INTERACTION.invoke(handle));
@@ -2734,6 +2736,8 @@ public class NMSImpl implements NMSBridge {
     }
 
     public static void restoreFluidTracker(NPC npc) {
+        if (ENTITY_FLUID_INTERACTION_MAP == null)
+            return;
         Entity handle = getHandle(npc.getEntity());
         Map map;
         try {
